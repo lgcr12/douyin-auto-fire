@@ -113,10 +113,5 @@ jobs:
           else
             python run.py
           fi
-      - name: Upload diagnostics
-        if: failure()
-        uses: actions/upload-artifact@v4
-        with:
-          name: douyin-failure-${{ github.run_id }}
-          path: artifacts/
-          retention-days: 3
+      # 说明：仓库是公开 fork，失败时上传的截图/日志会变成任何人可下载，故不自动上传。
+      # 需要排障时看 Actions 日志即可（好友昵称在日志里已打码），或临时把本步骤加回来。
